@@ -10,10 +10,18 @@ import * as Counter from './counter/counter.actions';
     styleUrls: [ './app.component.css' ]
 })
 export class AppComponent {
-    counter: Observable<any>;
+    counters: Observable<any[]>;
 
     constructor(private store: Store<any>) {
-        this.counter = this.store.select('counter');
+        this.counters = this.store.select('countersList');
+    }
+
+    onAddCounter() {
+        this.store.dispatch(new Counter.Add(Counter.getId()));
+    }
+
+    onRemoveCounter(id: number) {
+        this.store.dispatch(new Counter.Remove(id));
     }
 
     onIncrement(id: number) {

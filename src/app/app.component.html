@@ -1,6 +1,13 @@
-<counter 
-    [counter]="counter | async" 
-    (increment)="onIncrement($event)" 
-    (decrement)="onDecrement($event)" 
-    (reset)="onReset($event)">
-</counter>
+<button (click)="onAddCounter()">Add</button>
+
+<div class="container">
+    <div *ngFor="let counter of counters | async">
+        <counter 
+            [counter]="counter" 
+            (increment)="onIncrement($event)" 
+            (decrement)="onDecrement($event)" 
+            (reset)="onReset($event)"
+            (remove)="onRemoveCounter($event)">
+        </counter>
+    </div>
+</div>

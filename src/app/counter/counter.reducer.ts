@@ -6,7 +6,7 @@ import { Counter } from './counter.component';
 
 export type Action = CounterActions.All;
 
-export function counterReducer(state: Counter = new Counter(0, 0), action: ICounterAction): Counter {
+export function counterReducer(state: Counter, action: ICounterAction): Counter {
     switch (action.type) {
         case CounterActions.INCREMENT:
             if (state.id === action.id) {
@@ -25,6 +25,28 @@ export function counterReducer(state: Counter = new Counter(0, 0), action: ICoun
                 return Object.assign({}, state, state.value = action.value);
             }
             return state;
+
+        default:
+            return state;
+    }
+}
+
+export function countersListReducer (state: Counter[] = [], action: ICounterAction) {
+    switch (action.type) {
+        case CounterActions.ADD_COUNTER:
+            return [ ...state, Object.assign({}, new Counter(action.id, 0)) ];
+
+        case CounterActions.REMOVE_COUNTER:
+            return state.filter(counter => counter.id !== action.id);
+
+        case CounterActions.INCREMENT:
+            return state.map(counter => counterReducer(counter, action));
+
+        case CounterActions.DECREMENT:
+            return state.map(counter => counterReducer(counter, action));
+
+        case CounterActions.RESET:
+            return state.map(counter => counterReducer(counter, action));
 
         default:
             return state;
