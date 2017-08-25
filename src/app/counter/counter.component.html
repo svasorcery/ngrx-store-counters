@@ -1,6 +1,6 @@
-<span>{{ counter }}</span>
+<span>{{ counter.value }}</span>
 <div>
-    <button (click)="increment.emit()">Increment</button>
-    <button (click)="decrement.emit()" [disabled]="!counter">Decrement</button>
-    <button (click)="reset.emit()">Reset</button>
+    <button (click)="increment.emit(counter.id)">Increment</button>
+    <button (click)="decrement.emit(counter.id)" [disabled]="!counter.value">Decrement</button>
+    <button (click)="reset.emit(counter.id)">Reset</button>
 </div>

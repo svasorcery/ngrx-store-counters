@@ -1,6 +1,6 @@
 <counter 
     [counter]="counter | async" 
-    (increment)="onIncrement()" 
-    (decrement)="onDecrement()" 
-    (reset)="onReset()">
+    (increment)="onIncrement($event)" 
+    (decrement)="onDecrement($event)" 
+    (reset)="onReset($event)">
 </counter>
