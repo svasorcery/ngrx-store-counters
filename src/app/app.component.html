@@ -1,7 +1,5 @@
-<h2>Counters with ngrx/store app</h2>
-
 <counter 
-    [counter]="counter" 
+    [counter]="counter | async" 
     (increment)="onIncrement()" 
     (decrement)="onDecrement()" 
     (reset)="onReset()">
