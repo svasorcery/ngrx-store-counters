@@ -8,7 +8,7 @@ import { Store } from '@ngrx/store';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CounterComponent {
-    @Input() counter: Store<number>;
+    @Input() value: Store<number>;
 
     @Output() increment: EventEmitter<number> = new EventEmitter();
     @Output() decrement: EventEmitter<number> = new EventEmitter();
