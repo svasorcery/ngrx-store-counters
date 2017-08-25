@@ -10,22 +10,29 @@ import * as Counter from './counter/counter.actions';
     styleUrls: [ './app.component.css' ]
 })
 export class AppComponent {
-    counter: Observable<number>;
+    counters: Observable<any[]>;
 
     constructor(private store: Store<any>) {
-        this.counter = this.store.select('counter');
-        this.counter.subscribe(x => console.log('counter:', x));
+        this.counters = this.store.select('countersList');
     }
 
-    onIncrement() {
-        this.store.dispatch(new Counter.Increment());
+    onAddCounter() {
+        this.store.dispatch(new Counter.Add(Counter.getId()));
     }
 
-    onDecrement() {
-        this.store.dispatch(new Counter.Decrement());
+    onRemoveCounter(id: number) {
+        this.store.dispatch(new Counter.Remove(id));
     }
 
-    onReset() {
-        this.store.dispatch(new Counter.Reset(0));
+    onIncrement(id: number) {
+        this.store.dispatch(new Counter.Increment(id));
+    }
+
+    onDecrement(id: number) {
+        this.store.dispatch(new Counter.Decrement(id));
+    }
+
+    onReset(id: number) {
+        this.store.dispatch(new Counter.Reset(id, 0));
     }
 }
