@@ -5,9 +5,10 @@ export const REMOVE_COUNTER = '[CounterList] RemoveCounter';
 export const INCREMENT = '[Counter] Increment';
 export const DECREMENT = '[Counter] Decrement';
 export const RESET = '[Counter] Reset';
+export const RESET_ALL = '[CounterList] Reset All';
 
 export interface ICounterAction extends Action {
-    id: any;
+    id?: number;
     value?: number;
 }
 
@@ -36,12 +37,17 @@ export class Reset implements ICounterAction {
     constructor(public id: number, public value: number = 0) { }
 }
 
+export class ResetAll implements ICounterAction {
+    readonly type = RESET_ALL;
+}
+
 export type All
     = Add
     | Remove
     | Increment
     | Decrement
-    | Reset;
+    | Reset
+    | ResetAll;
 
 
 // fake id starting at random number

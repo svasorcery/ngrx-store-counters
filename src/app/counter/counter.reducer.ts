@@ -48,6 +48,9 @@ export function countersListReducer (state: Counter[] = [], action: ICounterActi
         case CounterActions.RESET:
             return state.map(counter => counterReducer(counter, action));
 
+        case CounterActions.RESET_ALL:
+            return state.map(counter => counterReducer(counter, new CounterActions.Reset(counter.id)));
+
         default:
             return state;
     }

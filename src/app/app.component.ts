@@ -35,4 +35,8 @@ export class AppComponent {
     onReset(id: number) {
         this.store.dispatch(new Counter.Reset(id, 0));
     }
+
+    onResetAll() {
+        this.store.dispatch(new Counter.ResetAll());
+    }
 }
