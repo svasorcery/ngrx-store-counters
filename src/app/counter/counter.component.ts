@@ -20,4 +20,5 @@ export class CounterComponent {
     @Output() increment: EventEmitter<number> = new EventEmitter();
     @Output() decrement: EventEmitter<number> = new EventEmitter();
     @Output() reset: EventEmitter<number> = new EventEmitter();
+    @Output() remove: EventEmitter<number> = new EventEmitter();
 }

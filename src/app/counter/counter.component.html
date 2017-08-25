@@ -3,4 +3,5 @@
     <button (click)="increment.emit(counter.id)">Increment</button>
     <button (click)="decrement.emit(counter.id)" [disabled]="!counter.value">Decrement</button>
     <button (click)="reset.emit(counter.id)">Reset</button>
+    <button (click)="remove.emit(counter.id)">Remove</button>
 </div>
